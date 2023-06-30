@@ -1,10 +1,6 @@
-const { buildAnimateClass, resetAnimationClasses } = require('./index')
+const { resetAnimationClasses } = require('./index')
 
-test('#buildAnimateClass builds the animation class', () => {
-  expect(buildAnimateClass('fade')).toBe('animate__fade')
-})
-
-test("#resetAnimationClasses remove 'animate_' class", () => {
+test("removes 'animate_' class", () => {
   const element = document.createElement('div')
   element.setAttribute('class', 'animate__test')
   expect(element.classList.contains('animate__test')).toBe(true)
@@ -13,7 +9,7 @@ test("#resetAnimationClasses remove 'animate_' class", () => {
   expect(element.classList.contains('animate__test')).toBe(false)
 })
 
-test("#resetAnimationClasses remove all 'animate_' classes", () => {
+test("removes all 'animate_' classes", () => {
   const element = document.createElement('div')
   element.setAttribute('class', 'animate__test animate__another-test')
 
@@ -22,7 +18,7 @@ test("#resetAnimationClasses remove all 'animate_' classes", () => {
   expect(element.classList.contains('animate__another-test')).toBe(false)
 })
 
-test("#resetAnimationClasses remove all 'animate_' classes except 'animate__animated'", () => {
+test("removes all 'animate_' classes except 'animate__animated'", () => {
   const element = document.createElement('div')
   element.setAttribute('class', 'animate__animated animate__test')
 

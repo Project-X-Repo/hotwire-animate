@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "jest --env=jsdom"
+    "test": "jest --env=jsdom --testPathPattern=test"
   },
   "keywords": [],
   "author": "",
