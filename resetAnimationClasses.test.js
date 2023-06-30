@@ -1,28 +1,33 @@
 const { resetAnimationClasses } = require('./index')
 
-test("removes 'animate_' class", () => {
-  const element = document.createElement('div')
-  element.setAttribute('class', 'animate__test')
-  expect(element.classList.contains('animate__test')).toBe(true)
+describe('#resetAnimationClasses', () => {
+  let element
 
-  resetAnimationClasses(element)
-  expect(element.classList.contains('animate__test')).toBe(false)
-})
+  beforeEach(() => {
+    element = document.createElement('div')
+  })
 
-test("removes all 'animate_' classes", () => {
-  const element = document.createElement('div')
-  element.setAttribute('class', 'animate__test animate__another-test')
+  test("removes 'animate_' class", () => {
+    element.setAttribute('class', 'animate__test')
+    expect(element.classList.contains('animate__test')).toBe(true)
 
-  resetAnimationClasses(element)
-  expect(element.classList.contains('animate__test')).toBe(false)
-  expect(element.classList.contains('animate__another-test')).toBe(false)
-})
+    resetAnimationClasses(element)
+    expect(element.classList.contains('animate__test')).toBe(false)
+  })
 
-test("removes all 'animate_' classes except 'animate__animated'", () => {
-  const element = document.createElement('div')
-  element.setAttribute('class', 'animate__animated animate__test')
+  test("removes all 'animate_' classes", () => {
+    element.setAttribute('class', 'animate__test animate__another-test')
 
-  resetAnimationClasses(element)
-  expect(element.classList.contains('animate__test')).toBe(false)
-  expect(element.classList.contains('animate__animated')).toBe(true)
+    resetAnimationClasses(element)
+    expect(element.classList.contains('animate__test')).toBe(false)
+    expect(element.classList.contains('animate__another-test')).toBe(false)
+  })
+
+  test("removes all 'animate_' classes except 'animate__animated'", () => {
+    element.setAttribute('class', 'animate__animated animate__test')
+
+    resetAnimationClasses(element)
+    expect(element.classList.contains('animate__test')).toBe(false)
+    expect(element.classList.contains('animate__animated')).toBe(true)
+  })
 })
