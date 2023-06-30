@@ -54,7 +54,7 @@ export function resetAnimationClasses(element) {
   element.classList = newClassList.join(' ')
 }
 
-function buildAnimateClass(animationName) {
+export function buildAnimateClass(animationName) {
   return `animate__${animationName}`
 }
 
