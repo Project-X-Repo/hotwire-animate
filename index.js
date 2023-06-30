@@ -1,4 +1,4 @@
-const animateCssClass = 'animate__animated'
+export const animateCssClass = 'animate__animated'
 
 // On page load
 document.addEventListener('turbo:load', () => {
