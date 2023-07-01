@@ -5,20 +5,18 @@ describe('#animateOut', () => {
 
   beforeEach(() => {
     element = document.createElement('div')
-    jest.spyOn(console, 'log');
   })
 
   test('adds the animateCssClass to the element', () => {
-    animateOut(element, '', () => console.log('animation ended'))
+    animateOut(element, '', () => {})
     expect(element.classList.contains(animateCssClass)).toBeTruthy()
   })
 
   test('callback is triggered when the animationend event fires', () => {
-    animateOut(element, '', () => console.log('animation ended'))
-
+    animateOut(element, '', () => element.textContent = "fired")
     const event = new Event("animationend");
     element.dispatchEvent(event);
 
-    expect(console.log).toHaveBeenCalledWith('animation ended')
+    expect(element.textContent).toBe('fired')
   })
 })
