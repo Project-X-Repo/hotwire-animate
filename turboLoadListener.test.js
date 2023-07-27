@@ -1,6 +1,6 @@
 import './index'
 
-describe('turbo:load', () => {
+describe('when turbo:load event fires', () => {
   let element
   let body
 
@@ -12,7 +12,7 @@ describe('turbo:load', () => {
     body.appendChild(element)
   })
 
-  test('animation classes are added on turbo:load event', () => {
+  test('animation classes are added', () => {
     const event = new Event("turbo:load");
     document.dispatchEvent(event);
 
@@ -21,7 +21,7 @@ describe('turbo:load', () => {
     body.innerHTML = ""
   })
 
-  test('animation duration is added on turbo:load event', () => {
+  test('animation duration is added', () => {
     element.setAttribute("data-hw-animate-duration", "infinite")
 
     const event = new Event("turbo:load");
