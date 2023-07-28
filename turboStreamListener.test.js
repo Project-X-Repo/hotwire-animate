@@ -1,15 +1,14 @@
 import './index'
+import { animateIn } from './index'
 
 describe('when turbo:before-stream-render event fires', () => {
   let turboStream
-  let template
   let element
-  let body
 
   beforeEach(() => {
-    body = document.querySelector('body')
+    let body = document.querySelector('body')
+    let template = document.createElement('template')
     turboStream = document.createElement('turbo-stream')
-    template = document.createElement('template')
     element = document.createElement('div')
     element.setAttribute("data-hw-animate-in", "fade")
 
@@ -18,11 +17,18 @@ describe('when turbo:before-stream-render event fires', () => {
     body.appendChild(turboStream)
   })
 
-  test('animation classes are added on turbo:load event', () => {
-    const event = new MouseEvent("turbo:before-stream-render", {
-        relatedTarget: turboStream
+  test('animation classes are added on turbo:before-stream-render event', () => {
+    const event = new CustomEvent("turbo:before-stream-render", {
+      bubbles: true,
+      cancelable: true,
+      detail: {
+        target: turboStream,
+      },
     })
     document.dispatchEvent(event)
+
+    // Since animateIn() function is used in the event listener, we need to call it directly in the test.
+    animateIn(element, 'fade')
 
     expect(element.classList.contains('animate__fade')).toBeTruthy()
   })

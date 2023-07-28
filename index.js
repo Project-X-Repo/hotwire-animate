@@ -13,8 +13,6 @@ document.addEventListener('turbo:load', () => {
 // On template render
 document.addEventListener('turbo:before-stream-render', (event) => {
   // Animate in
-  console.log(event.relatedTarget.innerHTML)
-  console.log(event.target.firstElementChild.innerHTML)
   if (event.target.firstElementChild instanceof HTMLTemplateElement) {
     const element = event.target.templateElement.content.firstElementChild
     const animationName = element.dataset.hwAnimateIn
